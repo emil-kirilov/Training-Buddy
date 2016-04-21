@@ -1,0 +1,25 @@
+<%= flash[:error] if flash[:error] %>
+
+<table>
+	<tr>
+		<th>date</th>
+		<th>protein</th>
+		<th>Options</th>
+	</tr>
+
+	<tbody>
+    <% if @days.empty? %>
+      <strong> No days yet</strong>
+    <% else %>
+    	<% @days.each do |day| %>
+    		<tr>
+    			<td><%= day.day %></td>
+    			<td><%= day.protein %></td>
+    		</tr>
+    	<% end %>
+		<% end %>
+	</tbody>
+</table>
+ 
+<%= link_to 'Back to user', user_path(params[:user_id]) %>
+<%=  link_to 'New day',{:action => :create}, :method => :post, :user_id => params[:user_id] %>

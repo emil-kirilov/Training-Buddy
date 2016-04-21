@@ -1,0 +1,12 @@
+<%= flash[:error] if flash[:error] %>
+
+<p>New user</p>
+
+<%= form_for @user do |f| %>
+	<%= f.label :email %>
+	<%= f.text_field :email %>
+	<%= f.label :password %>
+	<%= f.password_field :password %>
+
+	<%= f.submit 'Create user'%>
+<% end %>

@@ -1,0 +1,10 @@
+<%= flash[:notice] if flash[:notice] %>
+<%= flash[:error] if flash[:error] %>
+
+<p>Hello, <%= @user.email %>!</p>
+
+<%= @user.inspect %>
+
+
+<%= link_to 'Days', user_days_path(@user) %>
+<%= link_to 'Log out', '/logout' %>
