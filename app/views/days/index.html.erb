@@ -1,10 +1,11 @@
 <%= flash[:error] if flash[:error] %>
+<%= flash[:notice] if flash[:notice] %>
 
 <table>
 	<tr>
 		<th>date</th>
 		<th>protein</th>
-		<th>Options</th>
+		<th colspan="2">Options</th>
 	</tr>
 
 	<tbody>
@@ -15,6 +16,8 @@
     		<tr>
     			<td><%= day.day %></td>
     			<td><%= day.protein %></td>
+                <td><%= link_to 'View Day', day_path(day.id) %></td>
+                <td><%= link_to 'Delete Day', day,  method: :delete, data: { confirm: 'Are you sure?' } %></td>
     		</tr>
     	<% end %>
 		<% end %>

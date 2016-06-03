@@ -1,0 +1,25 @@
+<%= @day.inspect %>
+
+<table>
+	<tr>
+		<th>food</th>
+		<th>grams</th>
+		<th colspan="2">Options</th>
+	</tr>
+
+	<tbody>
+    <% if @meals.empty? %>
+      <strong> No meals yet</strong>
+    <% else %>
+    	<% @meals.each do |meal| %>
+    		<tr>
+    			<td><%= meal.food_id %></td>
+    			<td><%= meal.grams %></td>
+    		</tr>
+    	<% end %>
+		<% end %>
+	</tbody>
+</table>
+
+<%= link_to 'Add meal', new_day_meal_path(@day) %>
+<%= link_to 'Back to Days', user_days_path(current_user) %>	

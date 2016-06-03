@@ -1,0 +1,18 @@
+<%= @food.errors.messages if flash[:error] %>
+<%= flash[:error] if flash[:error] %>
+
+<p>New meal</p>
+
+<%= form_for @meal, :url => day_meals_path do |f| %>
+	<%= f.label :grams %>
+	<%= f.text_field :grams %>
+	<%= f.label :food_id %>
+	<%= f.collection_select :food_id, Food.order(:name),:id,:name, include_blank: true %>
+	<%= f.label :description %>
+	<%= f.text_area :description %>
+
+	<%= f.submit 'Add meal'%>
+<% end %>
+
+<%= link_to 'Back to user', user_path(current_user) %>
+<%= link_to 'Add product', new_user_food_path(current_user) %>

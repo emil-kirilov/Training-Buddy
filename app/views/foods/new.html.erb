@@ -1,0 +1,25 @@
+<%= @food.errors.messages if flash[:error] %>
+<%= flash[:error] if flash[:error] %>
+
+<p>New food</p>
+
+<%= form_for @food, :url => user_foods_path do |f| %>
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+	<%= f.label :description %>
+	<%= f.text_field :description %>
+	<%= f.label :energy %>
+	<%= f.text_field :energy %>
+	<%= f.label :fat %>
+	<%= f.text_field :fat %>
+	<%= f.label :protein %>
+	<%= f.text_field :protein %>
+	<%= f.label :carbohydrate %>
+	<%= f.text_field :carbohydrate %>
+	<%= f.label :fibre %>
+	<%= f.text_field :fibre %>
+
+	<%= f.submit 'Create food'%>
+<% end %>
+
+<%= link_to 'Back to user', user_path(params[:user_id]) %>

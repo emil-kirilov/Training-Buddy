@@ -1,7 +1,9 @@
 class Day < ActiveRecord::Base
   belongs_to :user
+  has_many :meals
 
-  validates :protein, presence: true 
-  validates :day, presence: true, uniqueness: true
   validates :user_id, presence: true
-end 
+  
+  validates :protein, presence: true 
+  validates :day, presence: true, uniqueness: { message: "Today was already created." }
+end

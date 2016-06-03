@@ -6,9 +6,10 @@ Rails.application.routes.draw do
 
   shallow do
     resources :users, only: %i(new show create index) do
-      resources :days, only: %i(index create) do
+      resources :days, only: %i(index create show destroy) do
         resources :meals
       end
+      resources :foods  
     end
   end
 end

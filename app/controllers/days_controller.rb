@@ -13,4 +13,20 @@ class DaysController < ApplicationController
   def index
     @days = Day.where(user_id: params[:user_id])
   end
+
+  def show
+    @day = Day.find(params[:id])
+    @meals = Meal.meals(@day)
+  end
+
+  def destroy
+    @day = Day.find(params[:id])
+    if @day.delete
+      flash.now[:notice] = "The day was deleted successfully."
+      redirect_to user_days_path(current_user)
+    else
+      flash.now[:error] = "The day was not deleted."
+      redirect_to user_days_path(current_user)
+    end
+  end
 end
