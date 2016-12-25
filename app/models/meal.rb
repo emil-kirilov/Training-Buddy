@@ -2,6 +2,8 @@ class Meal < ActiveRecord::Base
   belongs_to :day
   has_many :foods
 
+  attr_reader :protein
+
   validates :day_id, presence: true
   validates :food_id, presence: true 
   validates :grams, presence: true, :length => { :maximum => 5000 ,

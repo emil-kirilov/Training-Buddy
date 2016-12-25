@@ -10,7 +10,15 @@ class MealsController < ApplicationController
   def create
     @meal = Meal.new(meal_params)
     @meal.day_id = params[:day_id]
+    #@day = Day.where(user_id: current_user)
+
     if @meal.save
+      #@food = Food.find(@meal.food_id)
+      #@day.protein= @food.protein
+      p '-------------'
+      p Day.update(1, :protein => 4)
+      p '2-----------'
+
       redirect_to day_meals_path(params[:day_id])
     else
       render :new
