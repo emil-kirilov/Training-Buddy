@@ -5,7 +5,7 @@ class DaysController < ApplicationController
     if @day.save 
       redirect_to user_days_path
     else
-      flash[:error] = "New day could not be created."
+      flash[:error] = @day.errors   
       redirect_to user_days_path
     end
   end 

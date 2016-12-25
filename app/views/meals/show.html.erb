@@ -1,0 +1,8 @@
+<%= flash[:notice] if flash[:notice] %>
+<%= flash[:error] if flash[:error] %>
+
+<%= @meal.inspect %>
+
+
+<%= link_to 'Back to meals of this day', day_path(@meal.day_id) %>
+<%= link_to 'Back to days', user_days_path(current_user) %>

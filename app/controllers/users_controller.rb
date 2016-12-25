@@ -9,6 +9,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    #@user = User.new(email:"test", password:"test")
+
     if @user.save
       sign_in(@user)
       UserMailer.welcome_mail(@user).deliver_later

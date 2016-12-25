@@ -5,7 +5,7 @@
 	<tr>
 		<th>food</th>
 		<th>grams</th>
-		<th colspan="2">Options</th>
+		<th colspan="4">Options</th>
 	</tr>
 
 	<tbody>
@@ -17,6 +17,8 @@
     			<td><%= meals.food_id %></td>
     			<td><%= meals.grams %></td>
                 <td><%= link_to 'View meals', day_meals_path(params[:day_id], meals.id) %></td>
+                <td><%= link_to 'Back to day', day_path(params[:day_id]) %></td>
+                <td><%= link_to 'Back to user', user_path(current_user) %></td>
                 <td><%= link_to 'Delete meals', meals,  method: :delete, data: { confirm: 'Are you sure?' } %></td>
     		</tr>
     	<% end %>
