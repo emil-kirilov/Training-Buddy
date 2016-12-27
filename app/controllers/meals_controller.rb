@@ -15,9 +15,16 @@ class MealsController < ApplicationController
     if @meal.save
       #@food = Food.find(@meal.food_id)
       #@day.protein= @food.protein
-      p '-------------'
-      p Day.update(1, :protein => 4)
-      p '2-----------'
+      p "----------"
+      @day = Day.find(1)
+      @day.protein += @meal.protein
+      p @day.protein
+      if @day.save
+        p "yeeeeeeeees"
+        p @day.protein
+      else 
+        p "nooooo"
+      end
 
       redirect_to day_meals_path(params[:day_id])
     else

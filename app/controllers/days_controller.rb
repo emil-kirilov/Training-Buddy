@@ -29,4 +29,23 @@ class DaysController < ApplicationController
       redirect_to user_days_path(current_user)
     end
   end
+
+  def edit
+    @day = Day.find(params[:id])
+
+  end
+
+  def update
+    @day = Day.find(params[:id])
+    @day.protein = days_params[:protein]
+    if @day.save
+      redirect_to action: 'show'
+    else
+      redirect_to action: 'edit'
+    end
+  end
+
+  def days_params
+    params.require(:day).permit(:protein)
+  end
 end
