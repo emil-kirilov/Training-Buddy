@@ -1,3 +1,5 @@
+<%= p flash[:error] if flash[:error] %>
+<%= p flash[:notice] if flash[:notice] %>
 <%= @day.inspect %>
 
 <table>
@@ -16,6 +18,7 @@
     			<td><%= meal.food_id %></td>
     			<td><%= meal.grams %></td>
                 <td><%= link_to 'Show meal', meal_path(meal.id) %></td>
+                <td><%= link_to 'Delete meal', meal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     		</tr>
     	<% end %>
 		<% end %>

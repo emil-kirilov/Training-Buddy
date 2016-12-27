@@ -12,4 +12,9 @@ class Meal < ActiveRecord::Base
   def self.meals(day)
     where(day_id: day.id)
   end
+
+  def self.get_protein(day)
+  	food = Food.find(day.food_id)
+  	food.protein * day.grams / 100.0
+  end
 end

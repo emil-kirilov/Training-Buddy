@@ -10,24 +10,18 @@ class MealsController < ApplicationController
   def create
     @meal = Meal.new(meal_params)
     @meal.day_id = params[:day_id]
-    #@day = Day.where(user_id: current_user)
 
     if @meal.save
-      #@food = Food.find(@meal.food_id)
-      #@day.protein= @food.protein
-      p "----------"
-      @day = Day.find(1)
-      @day.protein += @meal.protein
-      p @day.protein
-      if @day.save
-        p "yeeeeeeeees"
-        p @day.protein
+      day = Day.find(params[:day_id])
+      day.protein += Meal.get_protein(@meal)
+      if day.save
+        flash.now[:notice] = "successfully increased day's protein"
       else 
-        p "nooooo"
+        flash.now[:error] = "could not increase day's protein"
       end
-
-      redirect_to day_meals_path(params[:day_id])
+         redirect_to day_path(params[:day_id])
     else
+      flash.now[:error] = "Meal was not created."
       render :new
     end
   end
@@ -44,9 +38,18 @@ class MealsController < ApplicationController
 
   def destroy
     @meal = Meal.find(params[:id])
+    day = Day.find(@meal.day_id)
+    day.protein -= Meal.get_protein(@meal)
     if @meal.delete
+      if day.save
+        p "---------------------------"
+        flash.now[:notice] = "successfully decreased day's protein"
+      else 
+        flash.now[:error] = "could decrease day's protein"
+      end
+
       flash.now[:notice] = "The meal was deleted successfully."
-      redirect_to day_meals_path(@meal.day_id)
+      redirect_to day_path(@meal.day_id)
     else
       flash.now[:error] = "The meal was not deleted."
       redirect_to day_meals_path(@meal.day_id)
