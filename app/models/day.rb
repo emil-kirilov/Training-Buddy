@@ -5,5 +5,5 @@ class Day < ActiveRecord::Base
   validates :user_id, presence: true
   
   validates :protein, presence: true 
-  validates :day, presence: true, uniqueness: { message: "Today was already created." }
+  validates :day, presence: true, uniqueness: { scope: :user_id, message: "Today was already created." }
 end

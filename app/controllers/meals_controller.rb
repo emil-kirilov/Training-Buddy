@@ -42,7 +42,6 @@ class MealsController < ApplicationController
     day.protein -= Meal.get_protein(@meal)
     if @meal.delete
       if day.save
-        p "---------------------------"
         flash.now[:notice] = "successfully decreased day's protein"
       else 
         flash.now[:error] = "could decrease day's protein"
