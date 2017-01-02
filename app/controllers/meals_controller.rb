@@ -19,7 +19,7 @@ class MealsController < ApplicationController
       else 
         flash.now[:error] = "could not increase day's protein"
       end
-         redirect_to day_path(params[:day_id])
+        redirect_to day_path(params[:day_id])
     else
       flash.now[:error] = "Meal was not created."
       render :new

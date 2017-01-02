@@ -3,6 +3,5 @@
 
 <%= @meal.inspect %>
 
-<%= link_to 'Add food to this meal', new_day_meal_path(@meal.day_id) %>
 <%= link_to 'Back to meals of this day', day_path(@meal.day_id) %>
 <%= link_to 'Back to days', user_days_path(current_user) %>

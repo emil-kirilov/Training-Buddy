@@ -1,5 +1,5 @@
-<%= p flash[:error] if flash[:error] %>
-<%= p flash[:notice] if flash[:notice] %>
+<%= flash[:error] if flash[:error] %>
+<%= flash[:notice] if flash[:notice] %>
 <%= @day.inspect %>
 
 <table>
@@ -14,7 +14,7 @@
       <strong> No meals yet</strong>
     <% else %>
     	<% @meals.each do |meal| %>
-    		<tr>
+    		<tr>w
     			<td><%= meal.food_id %></td>
     			<td><%= meal.grams %></td>
                 <td><%= link_to 'Show meal', meal_path(meal.id) %></td>
