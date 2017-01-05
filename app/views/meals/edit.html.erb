@@ -1,0 +1,16 @@
+
+
+<%= form_for @meal, method: :patch, url: 
+	meal_path(@meal) do |f| %>
+ 	<%= f.label :grams %>
+	<%= f.text_field :grams %>
+	<%= f.label :food_id %>
+	<%= f.collection_select :food_id, Food.order(:name),:id,:name, include_blank: true %>
+	<%= f.label :description %>
+	<%= f.text_area :description %>
+
+  <%= f.submit %>
+<% end %>
+
+<%= flash[:error] if flash[:error] %>
+<%= flash[:notice] if flash[:notice] %>

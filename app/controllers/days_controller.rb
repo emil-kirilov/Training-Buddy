@@ -32,11 +32,11 @@ class DaysController < ApplicationController
 
   def edit
     @day = Day.find(params[:id])
-
   end
 
   def update
-    @day = Day.find(params[:id])
+    meal = Meal.find(params[:id])
+    @day = Day.find(meal.day_id)
     @day.protein = days_params[:protein]
     if @day.save
       redirect_to action: 'show'

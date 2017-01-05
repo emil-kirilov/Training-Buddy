@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TrainingBuddy</title>
+    <title><%= yield(:page_title) %> | TrainingBuddy</title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
 
@@ -11,6 +11,8 @@
 
   <body>
     <%= render 'shared/navbar' %>
-    <%= yield %>
+    <div class="main-page-content <%= controller.controller_name %>"> 
+      <%= yield %>
+    </div>
   </body>
 </html>

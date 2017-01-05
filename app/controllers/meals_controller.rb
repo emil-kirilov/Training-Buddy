@@ -31,9 +31,36 @@ class MealsController < ApplicationController
   end
 
   def edit
+    @meal = Meal.find(params[:id])  
   end
   
   def update
+    @meal = Meal.find(params[:id])
+    day = Day.find(@meal.day_id)
+    old_meals_protein = Meal.get_protein(@meal)
+    
+    @meal.grams = params[:meal][:grams]
+    @meal.description = params[:meal][:description]
+    @meal.food_id = params[:meal][:food_id]
+
+    if @meal.save
+      p 111111111111
+      p old_meals_protein.to_i
+      day.protein -= old_meals_protein
+      day.protein += Meal.get_protein(@meal)
+      #TODO Day#update_protein
+      if day.save
+        flash.now[:notice] = "successfully increased day's protein"
+      else 
+        flash.now[:error] = "could not increase day's protein"
+      end
+
+      flash.now[:notice] = "edit successful, protein is refreshed"
+      redirect_to action: 'show'
+    else
+      flash.now[:error] = "could not edit the meal"
+      redirect_to action: 'edit'
+    end
   end
 
   def destroy
