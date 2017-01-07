@@ -1,3 +1,5 @@
+<% provide(:user, "active") %>
+
 <%= flash[:notice] if flash[:notice] %>
 <%= flash[:error] if flash[:error] %>
 <% provide(:page_title, @user.email) %>
