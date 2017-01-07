@@ -1,3 +1,4 @@
+<% provide(:page_title, "Day #{@day.id}") %>
 <%= flash[:error] if flash[:error] %>
 <%= flash[:notice] if flash[:notice] %>
 <%= @day.inspect %>
@@ -15,7 +16,7 @@
     <% else %>
     	<% @meals.each do |meal| %>
     		<tr>
-    			<td><%= meal.food_id %></td>
+    			<td><%= Food.find(meal.food_id).name %></td>
     			<td><%= meal.grams %></td>
                 <td><%= link_to 'Show meal', meal_path(meal.id) %></td>
                 <td><%= link_to 'Edit meal', edit_meal_path(meal.id) %></td>
