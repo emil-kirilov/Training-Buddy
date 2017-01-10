@@ -44,8 +44,6 @@ class MealsController < ApplicationController
     @meal.food_id = params[:meal][:food_id]
 
     if @meal.save
-      p 111111111111
-      p old_meals_protein.to_i
       day.protein -= old_meals_protein
       day.protein += Meal.get_protein(@meal)
       #TODO Day#update_protein
