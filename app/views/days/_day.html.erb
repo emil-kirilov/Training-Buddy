@@ -1,0 +1,11 @@
+<div class='col-sm-6 col-lg-4' >
+	<div class="card">
+		<div class="card-topper" style='background-image: url(http://lolofit.com/assets/icons/go_icon_large-aef28c5b2903df8f238044f0a1615eb5e7d4148a6b286e8895d18a0a490df746.png);'></div>
+		<div class="card-block">
+			<h4 class="card-day">Date : <%= link_to day.day, day %></h4>
+			<p class="card-protein">Protein : <%= link_to day.protein, day %></p>
+			<%= link_to 'Back to user', user_path(params[:user_id]), class: 'btn btn-user' %>
+
+		</div>
+	</div>
+</div>
